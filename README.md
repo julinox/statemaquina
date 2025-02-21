@@ -1,4 +1,3 @@
-```markdown
 # Finite State Machine
 
 This project implements a Finite State Machine (FSM) using the State design pattern in Go.  
@@ -34,7 +33,8 @@ actions associated with each state.
   ```
 ## Usage
 
-To create a new state machine, initialize it with a configuration and a list of states (cfg can be nil):
+To create a new state machine, initialize it with a configuration and a list of states (cfg can be nil):  
+Also can use 'Register()' function instead of 'states...'
 ```go
 func NewMaquinaEstado(cfg *StateMacCfg, states ...State) (StateMac, error)
 ```
@@ -47,4 +47,3 @@ machine.Start()
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-```
