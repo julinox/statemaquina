@@ -1,9 +1,7 @@
 # Finite State Machine (State Pattern)
 
-This project implements the State design pattern in Go. This pattern allows  
-an object to change its behavior when its internal state changes. This  
-implementationprovides a flexible and scalable way to manage state  
-transitions and actions associated with each state.
+Implements the State design pattern in Go. This pattern allows an object to change its behavior when its internal state changes.  
+This implementationprovides a flexible and scalable way to manage state transitions and actions associated with each state.
 
 ## Key Components
   ```go
