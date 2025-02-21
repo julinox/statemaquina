@@ -1,5 +1,3 @@
-Sure, here is a `README.md` file for your project:
-
 ```markdown
 # Finite State Machine
 
