@@ -1,9 +1,9 @@
-# Finite State Machine
+# Finite State Machine (State Pattern)
 
-This project implements a Finite State Machine (FSM) using the State design pattern in Go.  
-The State pattern allows an object to change its behavior when its internal state changes.  
-This implementation provides a flexible and scalable way to manage state transitions and  
-actions associated with each state.
+This project implements the State design pattern in Go. This pattern allows  
+an object to change its behavior when its internal state changes. This  
+implementationprovides a flexible and scalable way to manage state  
+transitions and actions associated with each state.
 
 ## Key Components
   ```go
