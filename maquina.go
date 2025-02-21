@@ -25,9 +25,9 @@ type StateMac interface {
 }
 
 type StateMacCfg struct {
-	stopOnError bool
-	stopOnCount int
-	lg          *logrus.Logger
+	StopOnError bool
+	StopOnCount int
+	Lg          *logrus.Logger
 }
 
 type xMaquinaDelMal struct {
@@ -52,7 +52,7 @@ func NewMaquinaEstado(cfg *StateMacCfg, states ...State) (StateMac, error) {
 	for i, state := range states {
 		if err := newMaquina.Register(state, i+1); err != nil {
 			newMaquina.print(err.Error())
-			if newMaquina.cfg.stopOnError {
+			if newMaquina.cfg.StopOnError {
 				return nil, err
 			}
 		}
@@ -71,12 +71,12 @@ func (x *xMaquinaDelMal) Start() error {
 
 		nextTransition := x.transit[transitCounter]
 		transitCounter++
-		if x.cfg.stopOnCount > 0 && transitCounter > x.cfg.stopOnCount {
+		if x.cfg.StopOnCount > 0 && transitCounter > x.cfg.StopOnCount {
 			return ErrorMaxCount
 		}
 
 		if x.table[nextTransition] == nil {
-			if x.cfg.stopOnError {
+			if x.cfg.StopOnError {
 				return ErrorStateNotFound
 			}
 
@@ -86,7 +86,7 @@ func (x *xMaquinaDelMal) Start() error {
 
 		nexState, err := x.table[nextTransition].Next()
 		if err != nil {
-			if x.cfg.stopOnError {
+			if x.cfg.StopOnError {
 				return err
 			}
 
@@ -128,13 +128,13 @@ func (x *xMaquinaDelMal) Register(state State, id int) error {
 }
 
 func (x *xMaquinaDelMal) SetMaxCount(count int) {
-	x.cfg.stopOnCount = count
+	x.cfg.StopOnCount = count
 }
 
 func (m *xMaquinaDelMal) print(msg string) {
 
-	if m.cfg.lg != nil {
-		m.cfg.lg.Info(msg)
+	if m.cfg.Lg != nil {
+		m.cfg.Lg.Info(msg)
 	} else {
 		fmt.Println(msg)
 	}
@@ -144,6 +144,6 @@ func defaultStateMacCfg() *StateMacCfg {
 
 	var cfg StateMacCfg
 
-	cfg.stopOnError = true
+	cfg.StopOnError = true
 	return &cfg
 }
