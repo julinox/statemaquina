@@ -15,7 +15,6 @@ actions associated with each state.
       Next() (int, error)
   }
   ```
-
 - **StateMac Interface**: Defines the methods for starting the state machine, posting events, registering states, and setting the maximum count of transitions.
   ```go
   type StateMac interface {
