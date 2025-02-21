@@ -37,7 +37,7 @@ type xMaquinaDelMal struct {
 	cfg        *StateMacCfg
 }
 
-func NewMaquinaEstado(cfg *StateMacCfg, states ...State) (StateMac, error) {
+func NewStateMaquina(cfg *StateMacCfg, states ...State) (StateMac, error) {
 
 	var newMaquina xMaquinaDelMal
 
