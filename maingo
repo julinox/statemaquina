@@ -1,0 +1,70 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	machine, err := NewMaquinaEstado(nil, &A{}, &B{}, &C{})
+	if err != nil {
+		panic(err)
+	}
+
+	machine.Post(1)
+	machine.SetMaxCount(5)
+	/*if err := machine.Register(&A{}, 0); err != nil {
+		panic(err)
+	}*/
+
+	//machine.SetMaxCount(1)
+	err = machine.Start()
+	if err != nil {
+		if err == ErrorMaxCount {
+			fmt.Println("Max count reached")
+		} else {
+			panic(err)
+		}
+	}
+}
+
+type A struct {
+	count int
+}
+
+type B struct {
+}
+
+type C struct {
+}
+
+func (a *A) Next() (int, error) {
+	fmt.Println("Handle A")
+	a.count++
+	if a.count == 10 {
+		return 0, nil
+	}
+
+	return 2, nil
+}
+
+func (b *B) Next() (int, error) {
+	fmt.Println("Handle B")
+	return 3, nil
+}
+
+func (c *C) Next() (int, error) {
+	fmt.Println("Handle C")
+	return 1, nil
+}
+
+// -------------------------------------------------------
+func (a *A) Name() string {
+	return "A"
+}
+
+func (b *B) Name() string {
+	return "B"
+}
+
+func (c *C) Name() string {
+	return "C"
+}
