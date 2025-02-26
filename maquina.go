@@ -90,7 +90,7 @@ func (x *xMaquinaDelMal) Start() error {
 				return err
 			}
 
-			x.print(fmt.Sprintf("transition error: %v -> %v", nextTransition, err))
+			x.print(fmt.Sprintf("transit error: %v -> %v", nextTransition, err))
 			continue
 		}
 
