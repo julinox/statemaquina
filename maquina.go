@@ -134,7 +134,7 @@ func (x *xMaquinaDelMal) SetMaxCount(count int) {
 func (m *xMaquinaDelMal) print(msg string) {
 
 	if m.cfg.Lg != nil {
-		m.cfg.Lg.Info(msg)
+		m.cfg.Lg.Debug(msg)
 	} else {
 		fmt.Println(msg)
 	}
