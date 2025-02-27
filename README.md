@@ -24,7 +24,6 @@ This implementation provides a flexible and scalable way to manage state transit
   }
 
   var (
-    ErrorStateNotFound = fmt.Errorf("state not found")
     ErrorStateReg      = fmt.Errorf("state already registered")
     ErrorMaxCount      = fmt.Errorf("max count reached")
   )
