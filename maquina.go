@@ -7,9 +7,8 @@ import (
 )
 
 var (
-	ErrorStateNotFound = fmt.Errorf("state not found")
-	ErrorStateReg      = fmt.Errorf("state already registered")
-	ErrorMaxCount      = fmt.Errorf("max count reached")
+	ErrorStateReg = fmt.Errorf("state already registered")
+	ErrorMaxCount = fmt.Errorf("max count reached")
 )
 
 type State interface {
@@ -77,7 +76,7 @@ func (x *xMaquinaDelMal) Start() error {
 
 		if x.table[nextTransition] == nil {
 			if x.cfg.StopOnError {
-				return ErrorStateNotFound
+				return fmt.Errorf("State '%v' not found", nextTransition)
 			}
 
 			x.print(fmt.Sprintf("Next state '%v' not found", nextTransition))
